@@ -9,15 +9,25 @@ const COUNTRY = '/country';
 
 export const getCountry = async(): Promise<AxiosResponse> => {
     const result =  await instance.get(`${COUNTRY}`);
-    return result.data;
+    return result;
 }
-//
-// export const getTrips = () => axios.get(`${url}${trip}`);
-//
-// export const postTrip = (trip) => axios.post(`https://task-devel.cleevio-vercel.vercel.app/api/trip`, trip, config);
-//
-// export const deletetrip = (id) => axios.delete(`${url}${trip}/${id}`);
-//
-// export const getTripById = (id) => axios.get(`${url}${trip}/${id}`);
-//
-// export const putTrip = (id, trip) => axios.put(`${url}${trip}/${id}`, trip );
+// export const getTrips = async(): Promise<AxiosResponse> => {
+//     const result =  await instance.get(`${TRIP}`);
+//     return result;
+// }
+// export const postTrip = async(params): Promise<AxiosResponse> => {
+//     const result =  await instance.post(`${TRIP}`,params);
+//     return result;
+// }
+// export const deletetrip = async(params): Promise<AxiosResponse> => {
+//     const result =  await instance.delete(`${TRIP}/${params}`);
+//     return result;
+// }
+// export const getTripById = async(params): Promise<AxiosResponse> => {
+//     const result =  await instance.get(`${TRIP}/${params}`);
+//     return result;
+// }
+// export const putTrip = async(id, trip): Promise<AxiosResponse> => {
+//     const result =  await instance.put(`${TRIP}/${id}`, trip);
+//     return result;
+// }

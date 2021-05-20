@@ -1,26 +1,20 @@
-import React, {useState, MouseEvent, FC, useRef} from 'react'
-// import {getCountry} from '../../utils/api'
+import React, {useState, useEffect, MouseEvent, FC} from 'react'
+import {useTypedSelector} from "../../store/hooks/useTypeSelector"
+import {fetchCountries} from "../../store/actions/country"
+import {useDispatch} from "react-redux"
 
 const InputCountry: FC = () => {
-    const div = useRef<HTMLDivElement>(null)
-    const result = [
-        {value: "aw", label: "Netherlands"},
-        {value: "gr", label: "Greece"},
-        {value: "fr", label: "France"},
-        {value: "pt", label: "Portugal"},
-        {value: "es", label: "Spain"},
-        {value: "it", label: "Italy"},
-        {value: "sk", label: "Slovakia"},
-        {value: "se", label: "Sweden"},
-        {value: "cn", label: "China"},
-        {value: "at", label: "Austria"},
-        {value: "uk", label: "United Kingdom"}]
-
-
     const [value, setValue] = useState<string | undefined>('GlobeUp')
     const [label, setLabel] = useState<string>('Select country')
     const [classDiv, setClassDiv] = useState<string>('select-input')
     const [check, setCheck] = useState<boolean>(false)
+    const {country} = useTypedSelector(state => state.country)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchCountries())
+    }, [dispatch])
+
+
     const handlerSelect = (): void => {
         setCheck(true)
     }
@@ -28,7 +22,7 @@ const InputCountry: FC = () => {
         let id: string = event.currentTarget.id
         setCheck(false)
         setLabel(id)
-        let res  = result?.find(i=>i.label===id)?.value
+        let res  = country?.find(i=>i.label===id)?.value
         setValue(res)
         setClassDiv('select-input county-check')
     }
@@ -38,7 +32,7 @@ const InputCountry: FC = () => {
         <div className='wrapper-trip-select'>
             <div className='input-text first-title'>Where do you want to go</div>
             <div className='select'>
-                <div className={classDiv} ref={div} onClick={handlerSelect}>{label}
+                <div className={classDiv} onClick={handlerSelect}>{label}
                     {check ? <div className='img-select'><img src='/images/GlobeCheck.svg' alt=""/></div> :
                         <>
                             <div className='img-select'><img src={`/images/country/${value}.svg`} width={20} alt=""/></div>
@@ -46,7 +40,7 @@ const InputCountry: FC = () => {
                         </>}
                 </div>
                 {check && <div className='option-wrap'>
-                    {result.map((item, index)=>
+                    {country.map((item, index)=>
                         <div key={item.value} id={item.label} onClick={selectCountry}><img src={`/images/country/${item.value}.svg`} alt="country" width={20}/><span>{item.label}</span></div>
                     )}
 

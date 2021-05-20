@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 
-const InputCompany = () => {
+
+const InputCompany: FC = () => {
 
     return (
         <div className='wrapper-trip'>

@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {FC} from 'react';
 import '../style/TripItem.scss'
+import {useTypedSelector} from "../store/hooks/useTypeSelector";
 
-const TripItem = () => {
-    const [state, setState] = useState([
-        {}
-    ])
+const TripItem: FC = () => {
+    const {country} = useTypedSelector(state => state.country)
+    console.log(country)
     return (
         <div className='wrapper'>
             <div className='country'>

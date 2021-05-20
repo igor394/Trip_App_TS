@@ -1,0 +1,86 @@
+%bgc-rad-item {
+  background: #F9F9FA;
+  border-radius: 10px;
+}
+
+%OS_nn_14_19{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+}
+%OS_n600_14_19{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+}
+%p-20 {
+  padding: 20px;
+}
+
+%m-20 {
+  margin: 20px;
+}
+
+%bor-bot {
+  border-bottom: 1px solid #F1F1F2;
+}
+
+%null_style {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+%wrap_mob {
+  @extend %bgc-rad-item;
+  @extend %m-20;
+  @extend %p-20;
+}
+
+%header_burg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+  height: 40px;
+  background: #F1F1F2;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+%head_mob_main {
+  display: flex;
+  padding: 20px;
+}
+
+%head_mob_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ @extend %OS_nn_14_19;
+}
+
+%btn_new_trip {
+  margin-top: 10px;
+  background: #F8D964;
+  border-radius: 10px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px 0 20px;
+  color: #000000;
+}
+
+%btn_trip_span {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+}

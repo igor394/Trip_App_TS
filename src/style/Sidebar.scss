@@ -1,0 +1,56 @@
+@import "const";
+.navbar{
+  padding: 20px;
+}
+.main_logo{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.main_logo img{
+  padding-top: 2px;
+}
+.btn_new_trip{
+  @extend %btn_new_trip;
+}
+.btn_new_trip span{
+  @extend %btn_trip_span;
+}
+.link_new_trip{
+  margin-top: 27px;
+}
+.link_new_trip span{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 25px;
+  color: #1C252B;
+}
+.link_future{
+  margin-top: 27px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #97999B;
+}
+.link_list img{
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+}
+.burger{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+  height: 40px;
+  background: #F1F1F2;
+  border-radius: 10px;
+}
+.header{
+  display: flex;
+  padding-bottom: 20px;
+}

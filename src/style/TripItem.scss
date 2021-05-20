@@ -1,0 +1,74 @@
+@import "const";
+
+.wrapper {
+  @extend %wrap_mob;
+}
+
+.country {
+  display: flex;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  padding-left: 2px;
+  margin-bottom: 24px;
+}
+
+.country img {
+  height: 20px;
+  width: 20px;
+}
+
+.country p {
+  margin-left: 10px;
+}
+
+.date p {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #63666A;
+  margin-bottom: 4px;
+}
+
+.date div {
+  @extend %OS_nn_14_19;
+  color: #000000;
+  margin-bottom: 22px;
+}
+
+.company p {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #63666A;
+  margin-bottom: 4px;
+}
+
+.company div {
+  @extend %OS_n600_14_19;
+  color: #0A1E40;
+}
+
+.company div:last-child {
+  font-weight: 400;
+  margin-bottom: 22px;
+}
+
+.btn_view {
+  @extend %OS_n600_14_19;
+  background: #F1F1F2;
+  border-radius: 10px;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: #76787B;
+}
+

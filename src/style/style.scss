@@ -1,0 +1,14 @@
+@import "const";
+
+* {
+  @extend %null_style;
+}
+
+body, html, #root {
+  height: 100%;
+  width: 100%;
+  min-width: 320px;
+}
+
+
+

@@ -9,6 +9,15 @@ body, html, #root {
   width: 100%;
   min-width: 320px;
 }
+@media screen and (max-width: 998px){
+  .main{
+    max-width: 500px;
+  }
+  #root{
+    display: flex;
+    justify-content: center;
+  }
+}
 
 
 

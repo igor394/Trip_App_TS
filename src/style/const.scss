@@ -21,12 +21,16 @@
   padding: 20px;
 }
 
+%dis_non{
+  display: none;
+}
 %m-20 {
   margin: 20px;
 }
 
-%bor-bot {
-  border-bottom: 1px solid #F1F1F2;
+%bor-top {
+  padding-top: 4px;
+  border-top: 1px solid #F1F1F2;
 }
 
 %null_style {
@@ -41,20 +45,9 @@
   @extend %p-20;
 }
 
-%header_burg {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 40px;
-  height: 40px;
-  background: #F1F1F2;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
 %head_mob_main {
   display: flex;
-  padding: 20px;
+
 }
 
 %head_mob_text {
@@ -75,6 +68,7 @@
   align-items: center;
   padding: 0 16px 0 20px;
   color: #000000;
+  cursor: pointer;
 }
 
 %btn_trip_span {
@@ -83,4 +77,14 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
+}
+%header_burg {
+  justify-content: center;
+  align-items: center;
+  min-width: 40px;
+  height: 40px;
+  background: #F1F1F2;
+  border-radius: 10px;
+  cursor: pointer;
+  @extend %dis_non;
 }

@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 
 
-
 const InputCompany: FC = () => {
 
     return (

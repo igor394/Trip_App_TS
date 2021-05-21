@@ -1,10 +1,11 @@
 import {combineReducers} from "redux";
 import {countryReducer} from "./countryReducere";
-// import {tripsReducer} from "./tripsReducer";
+import {stateReducer} from "./stateReducer"
 
 
 export const rootReducer = combineReducers({
     country: countryReducer,
+    stateData: stateReducer
     // trips: tripsReducer
 })
 

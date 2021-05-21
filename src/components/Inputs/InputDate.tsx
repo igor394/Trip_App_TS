@@ -3,7 +3,6 @@ import React from 'react'
 import "react-datepicker/dist/react-datepicker.css"
 
 const InputDate = () => {
-    // const [startDate, setStartDate] = useState(new Date());
 
     return (
         <div className='wrapper-trip'>

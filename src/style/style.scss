@@ -7,16 +7,54 @@
 body, html, #root {
   height: 100%;
   width: 100%;
-  min-width: 320px;
+  min-width: 280px;
 }
-@media screen and (max-width: 998px){
+@media screen and (min-width: 998px) {
+  .btn_new_trip {
+    max-width: 160px !important;
+  }
+  .navbar{
+    padding-left: 40px!important;
+  }
+}
+@media screen and (max-width: 997px){
   .main{
-    max-width: 500px;
+    //max-width: 500px;
+    width: 100%;
   }
   #root{
     display: flex;
     justify-content: center;
   }
+  .burger{
+    display: flex !important;
+  }
+  .sidebar-wrap{
+    width: 100%;
+  }
+}
+.header{
+  display: flex;
+  padding: 20px;
+}
+.main{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#root{
+  width: 100%;
+}
+.sidebar-wrap{
+  min-width: 240px;
+}
+.title-sidebar-trips{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  padding: 43px 0 0 20px;
+
 }
 
 

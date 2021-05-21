@@ -2,11 +2,14 @@
 
 .header-card{
  @extend %head_mob_main;
-  @extend %bor-bot;
+  @extend %p-20;
 }
 .main_text{
 @extend %head_mob_text;
 }
 .burger{
   @extend %header_burg;
+}
+.border-top{
+  @extend %bor-top;
 }

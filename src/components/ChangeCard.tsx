@@ -6,7 +6,8 @@ import InputCompany from "./Inputs/InputCompany"
 import InputCovid from "./Inputs/InputCovid"
 
 const ChangeCard = () => {
-
+    const clickHandler = (): void => {
+    }
 
     return (
         <div style={{paddingBottom: '20px'}}>
@@ -17,7 +18,7 @@ const ChangeCard = () => {
                 <InputCovid/>
             </div>
             <div className='border-bot'></div>
-            <div className='btn_card_trip'>
+            <div onClick={clickHandler} className='btn_card_trip'>
                 <span>Save</span>
                 <img src="/images/Check.svg" alt="logo" width={16} height={16}/>
             </div>

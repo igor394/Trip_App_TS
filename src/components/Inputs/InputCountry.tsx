@@ -1,7 +1,5 @@
-import React, {useState, useEffect, MouseEvent, FC} from 'react'
+import React, {useState, MouseEvent, FC} from 'react'
 import {useTypedSelector} from "../../store/hooks/useTypeSelector"
-import {fetchCountries} from "../../store/actions/country"
-import {useDispatch} from "react-redux"
 
 const InputCountry: FC = () => {
     const [value, setValue] = useState<string | undefined>('GlobeUp')
@@ -9,11 +7,6 @@ const InputCountry: FC = () => {
     const [classDiv, setClassDiv] = useState<string>('select-input')
     const [check, setCheck] = useState<boolean>(false)
     const {country} = useTypedSelector(state => state.country)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(fetchCountries())
-    }, [dispatch])
-
 
     const handlerSelect = (): void => {
         setCheck(true)
@@ -22,11 +15,10 @@ const InputCountry: FC = () => {
         let id: string = event.currentTarget.id
         setCheck(false)
         setLabel(id)
-        let res  = country?.find(i=>i.label===id)?.value
+        let res = country?.find(i => i.label === id)?.value
         setValue(res)
         setClassDiv('select-input county-check')
     }
-
 
     return (
         <div className='wrapper-trip-select'>
@@ -35,15 +27,17 @@ const InputCountry: FC = () => {
                 <div className={classDiv} onClick={handlerSelect}>{label}
                     {check ? <div className='img-select'><img src='/images/GlobeCheck.svg' alt=""/></div> :
                         <>
-                            <div className='img-select'><img src={`/images/country/${value}.svg`} width={20} alt=""/></div>
+                            <div className='img-select'><img src={`/images/country/${value}.svg`} width={20} alt=""/>
+                            </div>
                             <div className='img-select-arrow'><img src="/images/Vector.svg" alt=""/></div>
                         </>}
                 </div>
                 {check && <div className='option-wrap'>
-                    {country.map((item, index)=>
-                        <div key={item.value} id={item.label} onClick={selectCountry}><img src={`/images/country/${item.value}.svg`} alt="country" width={20}/><span>{item.label}</span></div>
+                    {country.map((item, index) =>
+                        <div key={item.value} id={item.label} onClick={selectCountry}><img
+                            src={`/images/country/${item.value}.svg`} alt="country"
+                            width={20}/><span>{item.label}</span></div>
                     )}
-
                 </div>}
             </div>
         </div>

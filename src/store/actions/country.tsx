@@ -7,7 +7,6 @@ export const fetchCountries = () => {
         try {
             dispatch({type: CountryActionTypes.FETCH_COUNTRY})
             const response = await getCountry()
-            console.log(response)
             dispatch({type: CountryActionTypes.FETCH_COUNTRY_SUCCESS, payload: response.data})
 
         } catch (e) {

@@ -1,34 +1,42 @@
 import React, {useState, useEffect} from 'react';
-import '../style/MainContainer.scss'
-import TripsList from "./TripsList";
+import '../style/MainContainer.scss';
 import ChangeCard from "./ChangeCard";
 import {useTypedSelector} from "../store/hooks/useTypeSelector";
 import {isPage} from "../store/reducer/stateReducer";
 import {useDispatch} from "react-redux";
+import TripsList from "./TripsList";
 
 
 const MainContainer = () => {
-    const [state, setState] = useState<string>('sidebar-wrap')
+    const [state, setState] = useState<string>('main-wrap')
     const {media, page} = useTypedSelector(state => state.stateData)
     const dispatch = useDispatch()
     useEffect(() => {
         if (!media && page === 'SIDEBAR') setState('hide')
-        else setState('sidebar-wrap')
+        else setState('main-wrap')
     }, [page, media]);
     const clickHandler = (): void => {
         dispatch(isPage('SIDEBAR'))
     }
     return (
         <div className={state}>
-            <div className='header'>
+            <div className='header-main'>
                 <div onClick={clickHandler} className='burger'>
                     <img src="/images/Hambur.svg" alt="burger" width={12} height={12}/>
                 </div>
-                <div className='main_text'><p>Your trips</p></div>
+                <div className='main_text'><p>{page}</p></div>
             </div>
-            <div className='border-top'>
-                {page === 'LIST_TRIP' ? <TripsList/> : <ChangeCard/>}
-            </div>
+                {page === 'Your trips' ? <TripsList/> :
+                    <>
+                        <ChangeCard/>
+                        <div className='border-bot'></div>
+                        <div className='btn_card_trip-wrap'>
+                            <div onClick={clickHandler} className='btn_card_trip'>
+                                <span>Save</span>
+                                <img src="/images/Check.svg" alt="logo" width={16} height={16}/>
+                            </div>
+                        </div>
+                    </>}
         </div>
     );
 };

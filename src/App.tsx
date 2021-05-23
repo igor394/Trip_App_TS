@@ -4,7 +4,7 @@ import MainContainer from "./components/MainContainer"
 import Sidebar from "./components/Sidebar"
 import {useDispatch} from "react-redux"
 import {fetchCountries} from "./store/actions/country"
-import {isMedia, isNotMedia} from "./store/reducer/stateReducer";
+import {isMedia, isNotMedia, isPage} from "./store/reducer/stateReducer";
 import {useTypedSelector} from "./store/hooks/useTypeSelector";
 import SidebarTrips from "./components/SidebarTrips";
 
@@ -16,13 +16,12 @@ function App() {
         dispatch(fetchCountries())
     }, [dispatch])
     useEffect(() => {
-        window.innerWidth > 997 ? dispatch(isMedia()) : dispatch(isNotMedia())
-    }, [dispatch]);
-    useEffect(() => {
-        const handleResize = () => window.innerWidth > 997 ? dispatch(isMedia()) : dispatch(isNotMedia())
+        window.innerWidth > 992 ? dispatch(isMedia()) : dispatch(isNotMedia());
+        const handleResize = () => window.innerWidth > 992 ? (dispatch(isMedia()), dispatch(isPage('Your trips'))) : dispatch(isNotMedia());
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [dispatch]);
+;
     return (
         <div className="main">
             <Sidebar/>

@@ -1,5 +1,5 @@
 @import "const";
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
 * {
   @extend %null_style;
 }
@@ -9,52 +9,109 @@ body, html, #root {
   width: 100%;
   min-width: 280px;
 }
-@media screen and (min-width: 998px) {
-  .btn_new_trip {
-    max-width: 160px !important;
-  }
-  .navbar{
-    padding-left: 40px!important;
-  }
-}
-@media screen and (max-width: 997px){
-  .main{
-    //max-width: 500px;
+
+@media screen and (max-width: 992px) {
+  .main {
     width: 100%;
   }
-  #root{
+  #root {
     display: flex;
     justify-content: center;
   }
-  .burger{
+  .burger {
     display: flex !important;
   }
-  .sidebar-wrap{
+  .sidebar-wrap {
     width: 100%;
+    background: #F9F9FA;
+  }
+  .main_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+  }
+  .btn_card_trip-wrap {
+    padding-bottom: 20px;
+  }
+  .header-main {
+
+    padding: 20px;
   }
 }
-.header{
+@media screen and (min-width: 993px) {
+  .btn_new_trip {
+    max-width: 160px !important;
+  }
+  .navbar {
+    padding-left: 40px !important;
+  }
+  .btn_card_trip-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .btn_card_trip {
+    min-width: 200px;
+  }
+  .header-main {
+    margin: 0 40px;
+    padding: 43px 0 24px 0;
+  }
+  .trip-list-main-desct {
+    margin: 0 20px;
+    padding-top: 12px;
+  }
+  .main_text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px ;
+    line-height: 33px;
+  }
+  .input-collum-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .input-collum{
+    max-width: 500px;
+  }
+}
+.header {
   display: flex;
   padding: 20px;
 }
-.main{
+
+.main {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-#root{
+
+#root {
   width: 100%;
 }
-.sidebar-wrap{
+
+.sidebar-wrap {
   min-width: 240px;
+  background: #F9F9FA;
 }
-.title-sidebar-trips{
+
+.title-sidebar-trips {
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
   padding: 43px 0 0 20px;
+}
 
+.main-wrap {
+  width: 100%;
 }
 
 

@@ -7,7 +7,7 @@ export enum StateActionTypes {
     MEDIA_IN = 'MEDIA_IN',
     PAGE = 'PAGE',
 }
-export type Pages = 'LIST_TRIP' | 'VIEW_TRIP' | 'NEW_TRIP' | 'EDIT_TRIP' | 'SIDEBAR'
+export type Pages = 'Your trips' | 'View trip' | 'New trip' | 'Edit trip' | 'SIDEBAR'
 
 interface MediaActionTypes {
     type: StateActionTypes.MEDIA;

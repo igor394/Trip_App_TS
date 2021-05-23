@@ -2,7 +2,7 @@ import {StateData, DataAction, StateActionTypes, Pages} from "../../types/dataSt
 
 const initialState: StateData = {
     media: false,
-    page: 'LIST_TRIP'
+    page: 'Your trips'
 }
 
 export const stateReducer = (state = initialState, action: DataAction): StateData => {

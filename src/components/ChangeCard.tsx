@@ -4,25 +4,37 @@ import InputCountry from "./Inputs/InputCountry"
 import InputDate from "./Inputs/InputDate"
 import InputCompany from "./Inputs/InputCompany"
 import InputCovid from "./Inputs/InputCovid"
+import {postTrip} from "../utils/api";
 
 const ChangeCard = () => {
-    const clickHandler = (): void => {
-    }
+    const onSubmit = () => {
+
+            postTrip({
+                start_date: new Date(),
+                end_date: new Date(),
+                company_name: 'MMM',
+                address: {
+                    street: 'Pols',
+                    city: 'Dnepr',
+                    country: 'Ukraine',
+                    zip:'1234'
+                },
+                covid: true,
+                covid_test_date: new Date(),
+            })};
+            onSubmit()
+
 
     return (
-        <div style={{paddingBottom: '20px'}}>
+        <div className='input-collum-wrap'>
             <div className='input-collum'>
                 <InputCountry/>
                 <InputDate/>
                 <InputCompany/>
                 <InputCovid/>
             </div>
-            <div className='border-bot'></div>
-            <div onClick={clickHandler} className='btn_card_trip'>
-                <span>Save</span>
-                <img src="/images/Check.svg" alt="logo" width={16} height={16}/>
-            </div>
         </div>
+
     );
 };
 

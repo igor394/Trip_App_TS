@@ -5,24 +5,12 @@
   align-items: center;
 }
 
-.main-card {
-  @extend %p-20;
-}
-
-.header {
-  @extend %head_mob_main;
-}
-
-.main_text {
-  @extend %head_mob_text;
-}
-
 .burger {
   @extend %header_burg;
 }
 
 .btn_card_trip {
-  margin: 0 20px;
+  margin: 20px;
   @extend %btn_new_trip;
 }
 

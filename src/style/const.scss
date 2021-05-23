@@ -28,9 +28,8 @@
   margin: 20px;
 }
 
-%bor-top {
-  padding-top: 4px;
-  border-top: 1px solid #F1F1F2;
+%bor {
+  border-bottom: 1px solid #F1F1F2;
 }
 
 %null_style {
@@ -43,19 +42,6 @@
   @extend %bgc-rad-item;
   @extend %m-20;
   @extend %p-20;
-}
-
-%head_mob_main {
-  display: flex;
-
-}
-
-%head_mob_text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
- @extend %OS_nn_14_19;
 }
 
 %btn_new_trip {

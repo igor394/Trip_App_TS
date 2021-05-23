@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import '../style/TripItem.scss'
+import '../../style/TripItem.scss'
 // import {useTypedSelector} from "../store/hooks/useTypeSelector";
 
 const TripItem: FC = () => {

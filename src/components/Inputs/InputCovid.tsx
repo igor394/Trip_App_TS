@@ -1,7 +1,11 @@
-import React, {useState, FC, MouseEvent} from 'react'
+import React, {useState, FC, MouseEvent, ChangeEvent} from 'react'
 import '../../style/ChangeCard.scss'
 
-const InputCovid: FC = () => {
+interface MyProps {
+    covidDate: (arg:string)=> void,
+    
+}
+const InputCovid: FC<MyProps> = ({covidDate}) => {
     const [covid, setCovid] = useState<boolean>(false)
     const [nameYes, setNameYes] = useState<ClassName>('')
     const [nameNo, setNameNo] = useState<ClassName>('')
@@ -17,9 +21,13 @@ const InputCovid: FC = () => {
                 setNameNo('radio-selected')
                 setNameYes('')
                 setCovid(false)
+                covidDate('')
                 break;
         }
     }
+    const covidHandler = (event:ChangeEvent<HTMLInputElement>) =>{
+        covidDate(event.currentTarget.value)
+     }
 
     return (
         <div className='wrapper-trip covid-wrap'>
@@ -43,7 +51,7 @@ const InputCovid: FC = () => {
             </div>
             {covid && <div className='covid-date'>
                 <div className='input-text'>Date of receiving test results</div>
-                <div><input className='input' type="date"/></div>
+                <div><input onChange={covidHandler} className='input' type="date"/></div>
             </div>}
         </div>
     );

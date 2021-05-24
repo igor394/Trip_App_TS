@@ -1,49 +1,31 @@
 import React, {FC} from 'react';
 import '../../style/TripItem.scss'
-// import {useTypedSelector} from "../store/hooks/useTypeSelector";
+import {useTypedSelector} from "../../store/hooks/useTypeSelector";
 
 const TripItem: FC = () => {
-
+    const {country} = useTypedSelector(state => state.country)
+    const {trips} = useTypedSelector(state => state.trips)
     return (
         <>
-            <div className='wrapper'>
+            {trips.map((elem, index) =><div key={elem.id}  className='wrapper'>
                 <div className='country'>
-                    <img src="/images/country/at.svg" alt="country"/>
+                    <img src={"/images/country/" + country.find(i=> i.label=== elem?.address.country)?.value + ".svg"} alt="country"/>
                     <p>Austria</p>
                 </div>
                 <div className='company'>
-                    <p>Company</p>
-                    <div>Diamler ASD</div>
-                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, nisi!</div>
+                    <p>{elem.address.country}</p>
+                    <div>{elem.company_name}</div>
+                    <div>{elem.address.city} {elem.address.street} {elem.address.zip}</div>
                 </div>
                 <div className='date'>
                     <p>Date</p>
-                    <div>Jul 14 - Sep 20, 2019</div>
+                    <div>{elem.start_date} {elem.end_date}</div>
                 </div>
                 <div className='btn_view'>
                     <span>Edit trip</span>
                     <img src="/images/Edit.svg" alt="arrow" width={16} height={16}/>
                 </div>
-            </div>
-            <div className='wrapper'>
-                <div className='country'>
-                    <img src="/images/country/at.svg" alt="country"/>
-                    <p>Austria</p>
-                </div>
-                <div className='company'>
-                    <p>Company</p>
-                    <div>Diamler ASD</div>
-                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, nisi!</div>
-                </div>
-                <div className='date'>
-                    <p>Date</p>
-                    <div>Jul 14 - Sep 20, 2019</div>
-                </div>
-                <div className='btn_view'>
-                    <span>View trip</span>
-                    <img src="/images/ArrowRight.svg" alt="arrow" width={16} height={16}/>
-                </div>
-            </div>
+            </div>)}
         </>
 
     );

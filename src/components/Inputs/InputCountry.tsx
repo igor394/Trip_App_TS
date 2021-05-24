@@ -1,7 +1,11 @@
 import React, {useState, MouseEvent, FC} from 'react'
 import {useTypedSelector} from "../../store/hooks/useTypeSelector"
 
-const InputCountry: FC = () => {
+interface MyProps {
+    countryDefine: (arg:string)=> void,
+}
+
+const InputCountry: FC<MyProps> = ({countryDefine}) => {
     const [value, setValue] = useState<string | undefined>('GlobeUp')
     const [label, setLabel] = useState<string>('Select country')
     const [classDiv, setClassDiv] = useState<string>('select-input')
@@ -18,6 +22,7 @@ const InputCountry: FC = () => {
         let res = country?.find(i => i.label === id)?.value
         setValue(res)
         setClassDiv('select-input county-check')
+        countryDefine(id)
     }
 
     return (

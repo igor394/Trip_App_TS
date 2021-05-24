@@ -7,8 +7,10 @@ import {useDispatch} from "react-redux";
 import TripsList from "./TripsList";
 
 
+
 const MainContainer = () => {
     const [state, setState] = useState<string>('main-wrap')
+    // const [submit, setSubmit] = useState<boolean>(false)
     const {media, page} = useTypedSelector(state => state.stateData)
     const dispatch = useDispatch()
     useEffect(() => {
@@ -26,17 +28,7 @@ const MainContainer = () => {
                 </div>
                 <div className='main_text'><p>{page}</p></div>
             </div>
-                {page === 'Your trips' ? <TripsList/> :
-                    <>
-                        <ChangeCard/>
-                        <div className='border-bot'></div>
-                        <div className='btn_card_trip-wrap'>
-                            <div onClick={clickHandler} className='btn_card_trip'>
-                                <span>Save</span>
-                                <img src="/images/Check.svg" alt="logo" width={16} height={16}/>
-                            </div>
-                        </div>
-                    </>}
+                {page === 'Your trips' ? <TripsList/> : <ChangeCard/>}
         </div>
     );
 };

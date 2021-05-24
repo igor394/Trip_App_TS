@@ -12,7 +12,7 @@ export const fetchCountries = () => {
         } catch (e) {
             dispatch({
                 type: CountryActionTypes.FETCH_COUNTRY_ERROR,
-                payload: 'An error occurred while loading users'
+                payload: 'An error occurred while loading country list'
             })
         }
     }

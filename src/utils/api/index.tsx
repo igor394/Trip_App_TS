@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
-const BASE_URL = 'https://task-devel.cleevio-vercel.vercel.app/api';
-const instance = axios.create ({baseURL: BASE_URL, headers:{Authorization: 'Bearer bJNKCgd6egyWJtR5ThMy'}})
+const BASE_URL = 'https://task-devel.cleevio-vercel.vercel.app/api'
+const instance = axios.create ({baseURL: BASE_URL, headers:{Authorization: 'Bearer tuJlyUkyUE0vHpwW5ZFg'}})
 
 const TRIP = '/trip';
 const COUNTRY = '/country';
@@ -17,7 +17,6 @@ export const getTrips = async(): Promise<AxiosResponse> => {
 }
 export const postTrip = async(params: any): Promise<AxiosResponse> => {
     const result =  await instance.post(`${TRIP}`,params);
-
     return result;
 }
 // export const deletetrip = async(params): Promise<AxiosResponse> => {

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import '../style/Sidebar.scss'
+import '../styles/Sidebar.scss'
 import {useTypedSelector} from "../store/hooks/useTypeSelector";
 import {useDispatch} from "react-redux";
-import {isPage} from "../store/reducer/stateReducer";
+import {isPage} from "../store/reducers/stateReducer";
 
 const Sidebar = () => {
     const [state, setState] = useState<string>('sidebar-wrap')

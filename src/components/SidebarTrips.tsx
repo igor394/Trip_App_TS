@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/SidebarTrips.scss'
+import '../styles/SidebarTrips.scss'
 import TripItem from "./TripItems/TripItem";
 
 

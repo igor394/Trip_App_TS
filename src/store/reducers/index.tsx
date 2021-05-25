@@ -1,5 +1,5 @@
 import {combineReducers} from "redux";
-import {countryReducer} from "./countryReducere";
+import {countryReducer} from "./countryReducer";
 import {stateReducer} from "./stateReducer"
 import {tripsReducer} from "./tripsReducer"
 

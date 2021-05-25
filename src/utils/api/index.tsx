@@ -15,14 +15,15 @@ export const getTrips = async(): Promise<AxiosResponse> => {
     const result =  await instance.get(`${TRIP}`);
     return result;
 }
-export const postTrip = async(params: any): Promise<AxiosResponse> => {
+export const createTrip = async(params: any): Promise<AxiosResponse> => {
     const result =  await instance.post(`${TRIP}`,params);
     return result;
 }
-// export const deletetrip = async(params): Promise<AxiosResponse> => {
-//     const result =  await instance.delete(`${TRIP}/${params}`);
-//     return result;
-// }
+export const deleteTrip = async(params: string): Promise<AxiosResponse> => {
+    const result =  await instance.delete(`${TRIP}/${params}`);
+    console.log(result)
+    return result;
+}
 // export const getTripById = async(params): Promise<AxiosResponse> => {
 //     const result =  await instance.get(`${TRIP}/${params}`);
 //     return result;

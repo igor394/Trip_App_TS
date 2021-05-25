@@ -53,6 +53,9 @@
 .company div {
   @extend %OS_n600_14_19;
   color: #0A1E40;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .company div:last-child {
@@ -71,39 +74,56 @@
   padding: 0 20px;
   color: #76787B;
 }
-.wrapper-desktop{
+
+.wrapper-desktop {
   background: #F9F9FA;
   border-radius: 10px;
-  margin: 12px 40px;
+  margin: 20px 40px;
   padding: 20px;
-display: flex;
+  display: flex;
   justify-content: center;
-  max-width: 800px;
-
 }
-.desktop-container{
+
+.desktop-container {
   width: 100%;
   display: block;
+
+  &:first-child {
+    padding-top: 12px;
+  }
 }
-.country-desktop img{
+.country-desktop{
+  display: flex;
+  align-items: center;
+}
+.country-desktop img {
   width: 40px;
   height: 40px;
 }
-.desktop-info{
-  //display: inline;
+
+.desktop-info {
   flex-direction: column;
   flex: auto;
-  & div{
+  div:first-child{
+   margin-bottom: 7px;
+  }
+
+  & div {
     display: flex;
-    & p{
+
+    & p {
       font-family: Open Sans;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       line-height: 22px;
       padding: 0 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    & div{
+
+    & div {
       @extend %OS_nn_14_19;
       color: #97999B;
       padding-left: 10px;
@@ -112,26 +132,34 @@ display: flex;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    & span{
+
+    & span {
       @extend %OS_nn_14_19;
       color: #000000;
       padding: 0 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
-.btn-remove{
+
+.btn-remove {
   background: #FBEBE9 !important;
 }
-.btn-desktop-row{
+
+.btn-desktop-row {
   display: flex;
-  & div{
+
+  & div {
     margin-left: 10px;
   }
 }
-.border-desktop-info{
+
+.border-desktop-info {
   margin-top: 5px;
   height: 10px;
-  border-left: 1px solid  #E4E4E5;
+  border-left: 1px solid #E4E4E5;
 }
 
 

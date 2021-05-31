@@ -1,11 +1,11 @@
 export  interface IAddress {
     street: string,
-    street_num: string,
     city: string,
     country: string,
     zip: string
 }
 export default interface ITripObject {
+    id?: string,
     start_date: string,
     end_date: string,
     company_name: string,

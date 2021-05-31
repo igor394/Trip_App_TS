@@ -2,17 +2,23 @@ import React, {useState, FC, MouseEvent, ChangeEvent, useEffect} from 'react'
 import '../../styles/ChangeCard.scss'
 import ITripObject from "../../utils/interfaces";
 import {useTypedSelector} from "../../store/hooks/useTypeSelector";
+import DatePicker from 'react-datepicker';
+
+
 
 interface MyProps {
     covidDate: (arg:string)=> void,
     object: ITripObject | null
 }
+type ClassName = '' | 'radio-selected'
+
 const InputCovid: FC<MyProps> = ({covidDate, object}) => {
+
     const {page} = useTypedSelector(state => state.stateData)
     const [covid, setCovid] = useState<boolean>(false)
     const [nameYes, setNameYes] = useState<ClassName>('')
     const [nameNo, setNameNo] = useState<ClassName>('')
-    type ClassName = '' | 'radio-selected'
+
     const handlerClick = (event: MouseEvent<HTMLElement>): void => {
         switch (event.currentTarget.id) {
             case 'yes':
@@ -28,8 +34,9 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                 break;
         }
     }
-    const covidHandler = (event:ChangeEvent<HTMLInputElement>) =>{
-        covidDate(event.currentTarget.value)
+    const covidHandler = () =>{
+        // (event:ChangeEvent<HTMLInputElement>) =>{
+        // covidDate(event.currentTarget.value)
      }
     useEffect(() => {
         if(page==='Edit trip' && object) {
@@ -135,7 +142,8 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                 </div>
                 {covid && <div className='covid-date'>
                     <div className='input-text'>Date of receiving test results</div>
-                    <div><input onChange={covidHandler} className='input' type="date" defaultValue={object?.covid_test_date}/></div>
+                    {/*<div><input onChange={covidHandler} className='input' type="date" defaultValue={object?.covid_test_date}/></div>*/}
+                    <DatePicker onChange={covidHandler}/>
                 </div>}
             </div>}
         </>

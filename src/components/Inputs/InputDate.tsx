@@ -27,6 +27,7 @@ const InputDate: FC<MyProps> = ({start, end, object}) => {
             <div className='wrapper-trip'>
                 <div className='input-text'>Start date</div>
                 <div><input onChange={handlerStart} className='input' type="date" />
+                    <div className=''></div>
                 </div>
                 <div className='input-text'>End date</div>
                 <div><input onChange={handlerEnd} className='input' type="date" /></div>

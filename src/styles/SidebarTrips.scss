@@ -3,3 +3,20 @@
   padding: 0 20px;
   border-left:1px solid #F1F1F2;
 }
+.sidebar-text{
+  margin-top: 20px;
+  max-width: 320px;
+  flex-direction: column;
+  span{
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: flex-end;
+    color: #63666A;
+    display: flex;
+    padding-top: 20px;
+  }
+}

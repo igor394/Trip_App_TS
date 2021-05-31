@@ -1,15 +1,17 @@
 import React, {FC, useState, useCallback, useEffect} from 'react'
 import '../styles/ChangeCard.scss'
-import InputCountry from "./Inputs/InputCountry"
-import InputDate from "./Inputs/InputDate"
-import InputCompany from "./Inputs/InputCompany"
-import InputCovid from "./Inputs/InputCovid"
-import {createTrip} from "../utils/api";
-import {fetchTrips} from "../store/actions/trips";
-import {useDispatch} from "react-redux";
-import {isPage, outIdTrip} from "../store/reducers/stateReducer";
-import {useTypedSelector} from "../store/hooks/useTypeSelector";
+import InputCountry from './Inputs/InputCountry'
+import InputDate from './Inputs/InputDate'
+import InputCompany from './Inputs/InputCompany'
+import InputCovid from './Inputs/InputCovid'
+import {createTrip, changeTrip} from '../utils/api';
+import {fetchTrips} from '../store/actions/trips';
+import {useDispatch} from 'react-redux';
+import {isPage, outIdTrip} from '../store/reducers/stateReducer';
+import {useTypedSelector} from '../store/hooks/useTypeSelector';
 import ITripObject from '../utils/interfaces/index'
+import 'react-datepicker/dist/react-datepicker'
+
 
 const ChangeCard: FC = () => {
         const {idTrips, page} = useTypedSelector(state => state.stateData)
@@ -24,7 +26,7 @@ const ChangeCard: FC = () => {
         const [zip, setZip] = useState<string>('')
         const [covidDate, setCovidDate] = useState<string>('')
         const [covid, setCovid] = useState<boolean>(false)
-        const [object, setObject] = useState<ITripObject|null>(null)
+        const [object, setObject] = useState<ITripObject | null>(null)
         const dispatch = useDispatch();
 
         const clickHandler = useCallback(async () => {
@@ -34,7 +36,7 @@ const ChangeCard: FC = () => {
                     end_date: end,
                     company_name: company,
                     address: {
-                        street: street+', '+streetNum,
+                        street: street + ', ' + streetNum,
                         city: city,
                         country: country,
                         zip: zip
@@ -49,10 +51,29 @@ const ChangeCard: FC = () => {
                 console.log(e)
             }
         }, [dispatch, country, covid, city, company, covidDate, start, street, streetNum, zip, end])
-    const handlerEdit = () =>{
-        console.log('edit')
-     }
 
+        const handlerEdit = useCallback(async () => {
+            try {
+                await changeTrip(object?.id,{
+                    start_date: start,
+                    end_date: end,
+                    company_name: company,
+                    address: {
+                        street: street + ', ' + streetNum,
+                        city: city,
+                        country: country,
+                        zip: zip
+                    },
+                    covid: covid,
+                    covid_test_date: covidDate
+                })
+                dispatch(fetchTrips())
+                dispatch(isPage('Your trips'))
+                dispatch(outIdTrip())
+            } catch (e) {
+                console.log(e)
+            }
+        }, [dispatch, country, covid, city, company, covidDate, start, street, streetNum, zip, end, object])
 
         const handlerStart = (arg: string): void => {
             setStart(arg)
@@ -91,23 +112,38 @@ const ChangeCard: FC = () => {
         useEffect(() => {
             if (trips && idTrips) setObject(trips.find(i => i.id === idTrips))
         }, [trips, idTrips]);
+        useEffect(() => {
+            if (page === 'Edit trip' && object) {
+                setStart (object.start_date)
+                setEnd (object.end_date)
+                setCompany (object.company_name)
+                setStreet (object.address.street.split(', ', 1)[0])
+                setStreetNum (object.address.street.split(', ', 2)[1]?object.address.street.split(', ', 2)[1]:'')
+                setCity (object.address.city)
+                setCountry (object.address.country)
+                setZip (object.address.zip)
+                setCovidDate (object.covid_test_date)
+                setCovid (object.covid)
+            }
+        }, [page, object]);
         return (
             <>
                 <div className='input-collum-wrap'>
                     <div className='input-collum'>
-                        <InputCountry object={object} countryDefine={handlerCountry} />
-                        <InputDate object={object} start={handlerStart} end={handlerEnd} />
-                        <InputCompany object={object} company={handlerCompany} street={handlerStreet} streetNum={handlerStreetNum} city={handlerCity} zip={handlerZip} />
-                        <InputCovid object={object} covidDate={handlerCovidDate} />
+                        <InputCountry object={object} countryDefine={handlerCountry}/>
+                        <InputDate object={object} start={handlerStart} end={handlerEnd}/>
+                        <InputCompany object={object} company={handlerCompany} street={handlerStreet}
+                                      streetNum={handlerStreetNum} city={handlerCity} zip={handlerZip}/>
+                        <InputCovid object={object} covidDate={handlerCovidDate}/>
                     </div>
                 </div>
                 {page === 'View trip' ? '' :
                     <>
                         <div className='border-bot'></div>
                         <div className='btn_card_trip-wrap'>
-                            <div onClick={page==='New trip'?clickHandler: handlerEdit} className='btn_card_trip'>
+                            <div onClick={page === 'New trip' ? clickHandler : handlerEdit} className='btn_card_trip'>
                                 <span>Save</span>
-                                <img src="/images/Check.svg" alt="logo" width={16} height={16}/>
+                                <img src='/images/Check.svg' alt='logo' width={16} height={16}/>
                             </div>
                         </div>
                     </>}

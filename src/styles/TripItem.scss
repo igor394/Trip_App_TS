@@ -53,7 +53,6 @@
 .company div {
   @extend %OS_n600_14_19;
   color: #0A1E40;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -73,6 +72,7 @@
   align-items: center;
   padding: 0 20px;
   color: #76787B;
+  cursor: pointer;
 }
 
 .wrapper-desktop {

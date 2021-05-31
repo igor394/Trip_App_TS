@@ -10,3 +10,12 @@
 .border-bot{
   @extend %bor;
 }
+.not-trip-text{
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #97999B;
+  margin: 40px 40px 0 40px
+}

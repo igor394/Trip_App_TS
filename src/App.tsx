@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useCallback, useEffect} from 'react'
 import './styles/style.scss'
 import MainContainer from "./components/MainContainer"
 import Sidebar from "./components/Sidebar"
@@ -19,14 +19,14 @@ function App() {
         dispatch(fetchCountries())
         dispatch(fetchTrips())
     }, [dispatch])
+    const handleResize = useCallback(() => window.innerWidth > 992 ? dispatch(isMedia()) : dispatch(isNotMedia()),[dispatch]);
     useEffect(() => {
-        window.innerWidth > 992 ? dispatch(isMedia()) : dispatch(isNotMedia());
-        const handleResize = () => window.innerWidth > 992 ? dispatch(isMedia()) : dispatch(isNotMedia());
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+    }, [dispatch, handleResize]);
+    useEffect(() => {
+        window.innerWidth > 992 ? dispatch(isMedia()) : dispatch(isNotMedia());
     }, [dispatch]);
-
-
     return (
         <div className="main">
             <Sidebar/>

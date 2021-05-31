@@ -19,14 +19,15 @@ const MainContainer = () => {
     const clickHandler = (): void => {
         dispatch(isPage('SIDEBAR'))
     }
+
     return (
         <div className={state}>
-            <div className='header-main'>
-                <div onClick={clickHandler} className='burger'>
-                    <img src="/images/Hambur.svg" alt="burger" width={12} height={12}/>
+                <div className='header-main'>
+                    <div onClick={clickHandler} className='burger'>
+                        <img src="/images/Hambur.svg" alt="burger" width={12} height={12}/>
+                    </div>
+                    <div className='main_text'><p>{page==='SIDEBAR'? 'Your trips': page}</p></div>
                 </div>
-                <div className='main_text'><p>{page==='SIDEBAR'? 'Your trips': page}</p></div>
-            </div>
                 {page === 'Your trips'||page ==='SIDEBAR' ? <TripsList/> : <ChangeCard/>}
         </div>
     );

@@ -32,6 +32,7 @@ const InputCountry: FC<MyProps> = ({countryDefine, object}) => {
         if(page==='Edit trip'&& object) {
             setLabel(object.address.country)
             setValue(country?.find(i => i.label === object.address.country)?.value)
+            // countryDefine(country?.find(i => i.label === object.address.country)?.label)
         }else {
             setLabel('Select country')
             setValue('GlobeUp')

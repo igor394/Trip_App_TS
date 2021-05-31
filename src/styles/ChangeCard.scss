@@ -1,4 +1,5 @@
 @import "const";
+@import 'node_modules/react-datepicker/src/stylesheets/datepicker.scss';
 
 %df_ai-c {
   display: flex;
@@ -185,8 +186,57 @@ input{
   line-height: 19px;
   color: #76787B;
 }
+.custom-input{
+  background: #FFFFFF;
+  border: 1px solid #E4E4E5;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 457px;
+}
 
+.react-datepicker-wrapper{
+  width: 100%;
+}
 
+.react-datepicker__input-container input{
+  width: 100%;
+  height: 48px;
+  background: #FFFFFF;
+  border: 1px solid #F1F1F2;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 20px;
+}
 
+.react-datepicker__triangle{
+  width: 100%;
+  display: none;
+  &::before{
+    display: none;
+  }
+}
+.react-datepicker__tab-loop, .react-datepicker-popper, .react-datepicker{
+  min-width: 410px;
+}
+.react-datepicker__header{
+  background: #FFFFFF;
+}
+.react-datepicker__current-month{
+  font-family: Open Sans!important;
+  font-style: normal!important;
+  font-weight: normal!important;
+  font-size: 14px!important;
+  line-height: 19px!important;
+  color: #76787B!important;
+  border: 1px solid #F1F1F2!important;
+}
+.react-datepicker__month-container{
+  width: 100%;
 
-
+}
+// string months name
+.react-datepicker__current-month, .react-datepicker__day-names{
+  width: 100%;
+  background: #FFFFFF;
+}

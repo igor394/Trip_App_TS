@@ -1,4 +1,4 @@
-import {CountryAction, CountryActionTypes, CountryState} from "../../types/country";
+import {CountryAction, CountryActionTypes, CountryState} from '../../types/country';
 
 const initialState: CountryState = {
     country: [],

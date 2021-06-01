@@ -1,6 +1,6 @@
-import {TripsAction, TripsActionTypes} from "../../types/trips";
-import {Dispatch} from "redux";
-import {getTrips} from "../../utils/api";
+import {TripsAction, TripsActionTypes} from '../../types/trips';
+import {Dispatch} from 'redux';
+import {getTrips} from '../../utils/api';
 
 export const fetchTrips = () => {
     return async (dispatch: Dispatch<TripsAction>) => {

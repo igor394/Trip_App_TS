@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import '../styles/MainContainer.scss';
-import ChangeCard from "./ChangeCard";
-import {useTypedSelector} from "../store/hooks/useTypeSelector";
-import {isPage} from "../store/reducers/stateReducer";
-import {useDispatch} from "react-redux";
-import TripsList from "./TripsList";
-
-
+import ChangeCard from './ChangeCard';
+import {useTypedSelector} from '../store/hooks/useTypeSelector';
+import {isPage} from '../store/reducers/stateReducer';
+import {useDispatch} from 'react-redux';
+import TripsList from './TripsList';
 
 const MainContainer = () => {
     const [state, setState] = useState<string>('main-wrap')
@@ -24,7 +22,7 @@ const MainContainer = () => {
         <div className={state}>
                 <div className='header-main'>
                     <div onClick={clickHandler} className='burger'>
-                        <img src="/images/Hambur.svg" alt="burger" width={12} height={12}/>
+                        <img src='/images/Hambur.svg' alt='burger' width={12} height={12}/>
                     </div>
                     <div className='main_text'><p>{page==='SIDEBAR'? 'Your trips': page}</p></div>
                 </div>

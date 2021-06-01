@@ -1,5 +1,6 @@
 @import "const";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
 * {
   @extend %null_style;
 }
@@ -7,7 +8,7 @@
 body, html, #root {
   width: 100%;
   min-width: 280px;
-height: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 992px) {
@@ -40,14 +41,15 @@ height: 100%;
   .header-main {
     padding: 20px;
   }
-  .input-collum-wrap{
+  .input-collum-wrap {
     display: flex;
     justify-content: center;
   }
-  .input-collum{
+  .input-collum {
     width: 450px;
   }
 }
+
 @media screen and (min-width: 993px) {
 
   .btn_new_trip {
@@ -75,18 +77,19 @@ height: 100%;
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px ;
+    font-size: 24px;
     line-height: 33px;
   }
-  .input-collum-wrap{
+  .input-collum-wrap {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .input-collum{
-    min-width: 450px;
+  .input-collum {
+    min-width: 500px;
   }
 }
+
 .header {
   display: flex;
   padding: 20px;
@@ -121,7 +124,8 @@ height: 100%;
   display: table;
   height: 100%;
 }
-.loader{
+
+.loader {
   position: absolute;
   top: 150px;
   left: 50%;

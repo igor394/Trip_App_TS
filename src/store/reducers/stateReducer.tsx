@@ -1,4 +1,4 @@
-import {StateData, DataAction, StateActionTypes, Pages} from "../../types/dataState";
+import {StateData, DataAction, StateActionTypes, Pages} from '../../types/dataState';
 
 const initialState: StateData = {
     media: false,

@@ -1,4 +1,4 @@
-import {TripsAction, TripsActionTypes, TripsState} from "../../types/trips";
+import {TripsAction, TripsActionTypes, TripsState} from '../../types/trips';
 
 const initialState: TripsState = {
     trips: [],

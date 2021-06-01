@@ -1,16 +1,19 @@
 @import "const";
 
-.header-main{
+.header-main {
   display: flex;
   @extend %bor;
 }
-.burger{
+
+.burger {
   @extend %header_burg;
 }
-.border-bot{
+
+.border-bot {
   @extend %bor;
 }
-.not-trip-text{
+
+.not-trip-text {
   font-family: Open Sans;
   font-style: normal;
   font-weight: 600;

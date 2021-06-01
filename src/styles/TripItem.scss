@@ -92,10 +92,12 @@
     padding-top: 12px;
   }
 }
-.country-desktop{
+
+.country-desktop {
   display: flex;
   align-items: center;
 }
+
 .country-desktop img {
   width: 40px;
   height: 40px;
@@ -104,8 +106,9 @@
 .desktop-info {
   flex-direction: column;
   flex: auto;
-  div:first-child{
-   margin-bottom: 7px;
+
+  div:first-child {
+    margin-bottom: 7px;
   }
 
   & div {

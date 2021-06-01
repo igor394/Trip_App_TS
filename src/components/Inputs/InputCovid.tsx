@@ -1,25 +1,33 @@
-import React, {useState, FC, MouseEvent, ChangeEvent, useEffect} from 'react'
-import '../../styles/ChangeCard.scss'
-import ITripObject from "../../utils/interfaces";
-import {useTypedSelector} from "../../store/hooks/useTypeSelector";
+import React, {useState, FC, MouseEvent, useEffect, useCallback} from 'react';
+import '../../styles/ChangeCard.scss';
+import ITripObject from '../../utils/interfaces';
+import {useTypedSelector} from '../../store/hooks/useTypeSelector';
 import DatePicker from 'react-datepicker';
 
-
-
 interface MyProps {
-    covidDate: (arg:string)=> void,
+    covidDate: (arg: string) => void,
     object: ITripObject | null
 }
+
 type ClassName = '' | 'radio-selected'
 
 const InputCovid: FC<MyProps> = ({covidDate, object}) => {
-
-    const {page} = useTypedSelector(state => state.stateData)
-    const [covid, setCovid] = useState<boolean>(false)
-    const [nameYes, setNameYes] = useState<ClassName>('')
-    const [nameNo, setNameNo] = useState<ClassName>('')
-
-    const handlerClick = (event: MouseEvent<HTMLElement>): void => {
+    const {page} = useTypedSelector(state => state.stateData);
+    const [covid, setCovid] = useState<boolean>(false);
+    const [nameYes, setNameYes] = useState<ClassName>('');
+    const [nameNo, setNameNo] = useState<ClassName>('');
+    const [startDate, setStartDate] = useState<Date | null>(new Date());
+    useEffect(() => {
+        if (page === 'Edit trip' && object) {
+            setCovid(object.covid)
+            if (object.covid) {
+                setStartDate(new Date(object?.covid_test_date))
+            } else setStartDate(new Date())
+        } else {
+            setCovid(false)
+        }
+    }, [page, object]);
+    const handlerClick = useCallback((event: MouseEvent<HTMLElement>): void => {
         switch (event.currentTarget.id) {
             case 'yes':
                 setNameNo('')
@@ -33,26 +41,19 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                 covidDate('')
                 break;
         }
-    }
-    const covidHandler = () =>{
-        // (event:ChangeEvent<HTMLInputElement>) =>{
-        // covidDate(event.currentTarget.value)
-     }
-    useEffect(() => {
-        if(page==='Edit trip' && object) {
-            setCovid(object.covid)
-        }else {
-            setCovid(false)
-        }
-    }, [page, object]);
+    }, [])
+    const covidHandler = useCallback((date: Date | null, event: React.SyntheticEvent<any> | undefined): void => {
+        setStartDate(date)
+        if (date) covidDate(date.toLocaleDateString().split('.').reverse().join('-'))
+    }, [])
 
     return (
         <>
-             {page === 'New trip' &&<div className='wrapper-trip covid-wrap'>
+            {page === 'New trip' && <div className='wrapper-trip covid-wrap'>
                 <div style={{padding: '20px'}}>
                     <div className='input-text first-title'>Have you been recently tested for <span>COVID-19?</span>
                     </div>
-                    <form className='radio-group' action="">
+                    <form className='radio-group'>
                         <div className='radio-btn'>
                             <div onClick={handlerClick} className={`radio-check ${nameYes}`} id='yes'>
                                 <div></div>
@@ -69,7 +70,7 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                 </div>
                 {covid && <div className='covid-date'>
                     <div className='input-text'>Date of receiving test results</div>
-                    <div><input onChange={covidHandler} className='input' type="date"/></div>
+                    <DatePicker selected={startDate} onChange={covidHandler}/>
                 </div>}
             </div>}
             {page === 'View trip' &&
@@ -77,9 +78,10 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                 {object?.covid ?
                     <>
                         <div style={{padding: '20px'}}>
-                            <div className='input-text first-title'>Have you been recently tested for <span>COVID-19?</span>
+                            <div className='input-text first-title'>Have you been recently tested
+                                for <span>COVID-19?</span>
                             </div>
-                            <form className='radio-group' action="">
+                            <form className='radio-group'>
                                 <div className='radio-btn'>
                                     <div onClick={handlerClick} className='radio-check radio-selected' id='yes'>
                                         <div></div>
@@ -94,16 +96,17 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                                 </div>
                             </form>
                         </div>
-                       <div className='covid-date'>
+                        <div className='covid-date'>
                             <div className='input-text'>Date of receiving test results</div>
-                            <div><input onChange={covidHandler} className='input' type="text" defaultValue={object.covid_test_date}/></div>
+                            <DatePicker selected={new Date(object?.covid_test_date)} onChange={covidHandler}/>
                         </div>
-                    </>:
+                    </> :
                     <>
                         <div style={{padding: '20px'}}>
-                            <div className='input-text first-title'>Have you been recently tested for <span>COVID-19?</span>
+                            <div className='input-text first-title'>Have you been recently tested
+                                for <span>COVID-19?</span>
                             </div>
-                            <form className='radio-group' action="">
+                            <form className='radio-group'>
                                 <div className='radio-btn'>
                                     <div onClick={handlerClick} className='radio-check' id='yes'>
                                         <div></div>
@@ -121,11 +124,12 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                     </>
                 }
             </div>}
-            {page === 'Edit trip' &&<div className='wrapper-trip covid-wrap'>
+            {page === 'Edit trip' &&
+            <div className='wrapper-trip covid-wrap'>
                 <div style={{padding: '20px'}}>
                     <div className='input-text first-title'>Have you been recently tested for <span>COVID-19?</span>
                     </div>
-                    <form className='radio-group' action="">
+                    <form className='radio-group'>
                         <div className='radio-btn'>
                             <div onClick={handlerClick} className={`radio-check ${nameYes}`} id='yes'>
                                 <div></div>
@@ -140,15 +144,12 @@ const InputCovid: FC<MyProps> = ({covidDate, object}) => {
                         </div>
                     </form>
                 </div>
-                {covid && <div className='covid-date'>
+                {covid && object && <div className='covid-date'>
                     <div className='input-text'>Date of receiving test results</div>
-                    {/*<div><input onChange={covidHandler} className='input' type="date" defaultValue={object?.covid_test_date}/></div>*/}
-                    <DatePicker onChange={covidHandler}/>
+                    <DatePicker selected={startDate} onChange={covidHandler}/>
                 </div>}
             </div>}
         </>
-
     );
-};
-
+}
 export default InputCovid;

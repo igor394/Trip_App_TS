@@ -1,8 +1,7 @@
 import React from 'react';
 import '../styles/SidebarTrips.scss'
-import TripItem from "./TripItems/TripItem";
-import {useTypedSelector} from "../store/hooks/useTypeSelector";
-
+import TripItem from './TripItems/TripItem';
+import {useTypedSelector} from '../store/hooks/useTypeSelector';
 
 const SidebarTrips = () => {
     const {page} = useTypedSelector(state => state.stateData)
@@ -17,7 +16,6 @@ const SidebarTrips = () => {
                 </div>:
                 <TripItem/>
             }
-
         </div>
     );
 };

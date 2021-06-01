@@ -1,13 +1,15 @@
-.sidebar-trips{
+.sidebar-trips {
   min-width: 320px !important;
   padding: 0 20px;
-  border-left:1px solid #F1F1F2;
+  border-left: 1px solid #F1F1F2;
 }
-.sidebar-text{
+
+.sidebar-text {
   margin-top: 20px;
   max-width: 320px;
   flex-direction: column;
-  span{
+
+  span {
     font-family: Open Sans;
     font-style: normal;
     font-weight: normal;

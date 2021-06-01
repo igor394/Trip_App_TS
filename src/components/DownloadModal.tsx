@@ -1,5 +1,5 @@
-import React, {FC} from 'react'
-import Loader from "react-loader-spinner"
+import React, {FC} from 'react';
+import Loader from "react-loader-spinner";
 
 const DownloadModal: FC = () => {
     return (

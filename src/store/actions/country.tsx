@@ -1,6 +1,6 @@
-import {CountryAction, CountryActionTypes} from "../../types/country";
-import {Dispatch} from "redux";
-import {getCountry} from "../../utils/api";
+import {CountryAction, CountryActionTypes} from '../../types/country';
+import {Dispatch} from 'redux';
+import {getCountry} from '../../utils/api';
 
 export const fetchCountries = () => {
     return async (dispatch: Dispatch<CountryAction>) => {

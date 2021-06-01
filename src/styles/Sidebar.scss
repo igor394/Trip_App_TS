@@ -1,26 +1,32 @@
 @import "const";
 
-.navbar{
+.navbar {
   padding: 0 20px;
 }
-.main_logo{
+
+.main_logo {
   display: flex;
   justify-content: center;
   width: 100%;
 }
-.main_logo img{
+
+.main_logo img {
   padding-top: 2px;
 }
-.btn_new_trip{
+
+.btn_new_trip {
   @extend %btn_new_trip;
 }
-.btn_new_trip span{
+
+.btn_new_trip span {
   @extend %btn_trip_span;
 }
-.link_new_trip{
+
+.link_new_trip {
   margin-top: 27px;
 }
-.link_new_trip span{
+
+.link_new_trip span {
   font-family: Open Sans;
   font-style: normal;
   font-weight: 600;
@@ -29,7 +35,8 @@
   color: #1C252B;
   cursor: pointer;
 }
-.link_future{
+
+.link_future {
   margin-top: 27px;
   font-family: Open Sans;
   font-style: normal;
@@ -38,7 +45,8 @@
   line-height: 25px;
   color: #97999B;
 }
-.link_list img{
+
+.link_list img {
   margin-right: 10px;
   width: 16px;
   height: 16px;
